@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<title>Add WOD</title>
+	<style type="text/css">
+		body {
+			background-color: white;
+			font-family: serif;
+		}
+
+		.box1, .box2, .box3 {
+			margin: 50px 100px 50px 100px;
+			padding: 50px 40px 50px 40px;
+			border: rgb(236,236,236);
+			background-color: rgb(238,238,238);
+			border-radius: 15px;
+		}
+
+		ul {
+			list-style-type: none;
+			padding: 2px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="box1">
+		<h1><strong>Add new WOD</strong></h1>
+		<div class="form-group">
+			<label for="exampleInput1"><strong>Questions</strong></label>
+			<input type="text" class="form-control" id="quest" placeholder="Enter the WOD">
+		</div>
+		<div class="form-group">
+			<label for="exampleFormControlSelect1"><strong>Difficulty</strong></label>
+			<select class="form-control" id="diff">
+				<option>Easy</option>
+				<option>Medium</option>
+				<option>Hard</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="name"><strong>Assigned to</strong></label>
+			<input type="text" class="form-control" id="name">
+		</div>
+		<button type="submit" class="btn btn-primary" onclick="addItem(),myFunction()">Add</button>
+	</div>
+	<hr>
+	<div class=box2>
+		<h1><strong>The WODs</strong></h1>
+		<table id="wod-table" class="table table-bodered table-striped table-hover">
+				<tr>
+					<th>Questions</th>
+					<th>Assignee</th>
+					<th>Difficulty</th>
+				</tr>
+				<tr id="newQues">
+
+				</tr>
+				<tr id="newDiff">
+
+				</tr>
+				<tr id="newName">
+
+				</tr>
+		</table>
+	</div>
+	<hr>
+	<div class="box3">
+		<h1><strong>About WOD</strong></h1>
+		<ul id="myList">
+			
+		</ul>
+		<button type="submit" class="btn btn-primary" onclick="">Mark as done</button>
+		<button type="remove" class="btn btn-primary" onclick="myFunction()">Remove</button>	
+	</div>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script type="text/javascript">
+	function addItem(){
+		var newTr = document.createElement("tr");
+
+		var newTd1 = document.createElement("td");
+		var newTd2 = document.createElement("td");
+		var newTd3 = document.createElement("td");
+
+		newTd1.innerHTML = document.getElementById("quest").value;
+		newTd2.innerHTML = document.getElementById("diff").value;
+		newTd3.innerHTML = document.getElementById("name").value;
+
+		newTr.appendChild(newTd1);
+		newTr.appendChild(newTd2);
+		newTr.appendChild(newTd3);
+
+		var table = document.getElementById("wod-table");
+		table.appendChild(newTr);
+	}
+
+	function myFunction(){
+		var newUl = document.createElement("ul");
+
+		var newLi1 = document.createElement("li");
+		var newLi2 = document.createElement("li");
+		var newLi3 = document.createElement("li");
+		var newLi4 = document.createElement("li");
+
+		newLi1.innerHTML = document.getElementById("quest").value;
+		document.getElementById("quest").value = "";
+		newLi2.innerHTML = document.getElementById("diff").value;
+		document.getElementById("myList").value = "";
+		newLi3.innerHTML = document.getElementById("name").value;
+		document.getElementById("myList").value = "";
+		newLi4 = document.getElementById("myList").innerHTML = "Status: ";
+		var itemUl = document.getElementById("myList");
+		itemUl.appendChild(newLi1); 
+		itemUl.appendChild(newLi2);
+		itemUl.appendChild(newLi3);
+		itemUl.appendChild(newLi4);
+	}
+
+
+
+</script>
+</body>
+</html>
